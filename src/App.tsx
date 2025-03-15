@@ -32,29 +32,24 @@
 //   )
 // }
 
-// export default App
-
-
-// import Button from "./Button";
-
-// const App: React.FC = () => {
-//   return (
-//     <div className="p-4">
-//       <Button text="Click Me" onClick={() => alert("Button Clicked!")} />
-//     </div>
-//   );
-// };
-
-// export default App;
-
 import React from "react";
-import CounterButton from "./CounterButton";
+import Button from "./components/Button";
+import CounterButton from "./components/CounterButton";
+import Message from "./components/Message";
+import ListGroup from "./components/ListGroup";
 
+// function App() {
 const App: React.FC = () => {
   return (
-      <div className="p-4">
-        <CounterButton />
-      </div>
+    <div className="p-4">
+      <Message />
+
+      <Button text="Click Me" onClick={() => alert("Button Clicked!")} />
+
+      <CounterButton />
+
+      <ListGroup />
+    </div>
   );
 };
 

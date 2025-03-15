@@ -1,7 +1,11 @@
+// TypeScript: Restart TS Server
+// npm install @reduxjs/toolkit react-redux
+// npm run dev
+
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "./store";
-import { increment, decrement } from "./counterSlice";
+import { RootState } from "../store";
+import { increment, decrement } from "../counterSlice";
 
 const CounterButton: React.FC = () => {
   const count = useSelector((state: RootState) => state.counter.count);
