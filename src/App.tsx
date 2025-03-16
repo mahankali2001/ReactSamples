@@ -37,6 +37,7 @@ import Button from "./components/Button";
 import CounterButton from "./components/CounterButton";
 import Message from "./components/Message";
 import ListGroup from "./components/ListGroup";
+import Alert from "./components/Alert";
 
 // function App() {
 const App: React.FC = () => {
@@ -51,7 +52,7 @@ const App: React.FC = () => {
     <div className="p-4">
       <Message />
 
-      <Button text="Click Me" onClick={() => alert("Button Clicked!")} />
+      <Button onClick={() => alert("Button Clicked!")}>Click Me</Button>
 
       <CounterButton />
 
@@ -60,6 +61,10 @@ const App: React.FC = () => {
         heading="Numbers"
         onItemClick={handleItemClick}
       />
+      {/* <Alert text="Hello World"/> */}
+      <Alert>
+        Hello <span>World</span>
+      </Alert>
     </div>
   );
 };
