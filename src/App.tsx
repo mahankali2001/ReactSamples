@@ -40,6 +40,8 @@ import ListGroup from "./components/ListGroup";
 
 // function App() {
 const App: React.FC = () => {
+  let items = ["one", "two", "three", "four"];
+
   return (
     <div className="p-4">
       <Message />
@@ -48,7 +50,7 @@ const App: React.FC = () => {
 
       <CounterButton />
 
-      <ListGroup />
+      <ListGroup items={items} heading="Numbers" />
     </div>
   );
 };
