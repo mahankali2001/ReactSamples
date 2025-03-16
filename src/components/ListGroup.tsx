@@ -5,10 +5,13 @@ import { useState } from "react";
 interface Props {
   items: string[];
   heading: string;
+  onItemClick: (item: string) => void;
 }
 
 // PascalCasing
-function ListGroup(props: Props) {
+const ListGroup: React.FC<Props> = ({ items, heading, onItemClick }) => {
+  // function ListGroup({ items, heading, onItemClick}: Props) {
+
   // const items = ["one", "two", "three", "four"];
   // let items = ["one", "two", "three", "four"];
   // items = []; //1
@@ -41,15 +44,15 @@ function ListGroup(props: Props) {
 
   return (
     <>
-      <h1>{props.heading}</h1>
+      <h1>{heading}</h1>
       {
         // items.length === 0 ? <p>No items found</p> : null //0
         // message //2
         // getMessage() //3
-        props.items.length === 0 && <p>No items found</p> //4
+        items.length === 0 && <p>No items found</p> //4
       }
       <ul className="list-group">
-        {props.items.map((item, index) => (
+        {items.map((item, index) => (
           <li
             // className="list-group-item active"
             className={
@@ -65,6 +68,7 @@ function ListGroup(props: Props) {
               // alert(index);
               // selectedIndex = index; // won't work
               setSelectedIndex(index); // works
+              onItemClick(item);
             }}
           >
             {item}
@@ -73,6 +77,6 @@ function ListGroup(props: Props) {
       </ul>
     </>
   );
-}
+};
 
 export default ListGroup;

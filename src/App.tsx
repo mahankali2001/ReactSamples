@@ -42,6 +42,11 @@ import ListGroup from "./components/ListGroup";
 const App: React.FC = () => {
   let items = ["one", "two", "three", "four"];
 
+  function handleItemClick(item: string): void {
+    console.log(item);
+    //   throw new Error("Function not implemented.");
+  }
+
   return (
     <div className="p-4">
       <Message />
@@ -50,7 +55,11 @@ const App: React.FC = () => {
 
       <CounterButton />
 
-      <ListGroup items={items} heading="Numbers" />
+      <ListGroup
+        items={items}
+        heading="Numbers"
+        onItemClick={handleItemClick}
+      />
     </div>
   );
 };
