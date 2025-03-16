@@ -32,7 +32,7 @@
 //   )
 // }
 
-import React from "react";
+import React, { useState } from "react";
 import Button from "./components/Button";
 import CounterButton from "./components/CounterButton";
 import Message from "./components/Message";
@@ -48,11 +48,15 @@ const App: React.FC = () => {
     //   throw new Error("Function not implemented.");
   }
 
+  const [alertVisible, setAlertVisible] = useState(false);
+
   return (
     <div className="p-4">
       <Message />
 
-      <Button onClick={() => alert("Button Clicked!")}>Click Me</Button>
+      {/* <Button onClick={() => alert("Button Clicked!")}>Click Me</Button>
+       */}
+      <Button onClick={() => setAlertVisible(true)}>Click Me</Button>
 
       <CounterButton />
 
@@ -62,9 +66,12 @@ const App: React.FC = () => {
         onItemClick={handleItemClick}
       />
       {/* <Alert text="Hello World"/> */}
-      <Alert>
-        Hello <span>World</span>
-      </Alert>
+      {alertVisible && (
+        <Alert onClose={() => setAlertVisible(false)}>
+          {/* Hello <span>World</span> */}
+          Hello World
+        </Alert>
+      )}
     </div>
   );
 };
