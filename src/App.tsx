@@ -36,7 +36,7 @@ import React, { useState } from "react";
 import Button from "./components/Button";
 import CounterButton from "./components/CounterButton";
 import Message from "./components/Message";
-import ListGroup from "./components/ListGroup";
+import ListGroup from "./components/ListGroup/ListGroup";
 import Alert from "./components/Alert";
 
 // function App() {

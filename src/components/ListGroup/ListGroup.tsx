@@ -1,6 +1,7 @@
 // import { MouseEvent } from "react";
 
 import { useState } from "react";
+import styles from "./ListGroup.module.css";
 
 interface Props {
   items: string[];
@@ -51,7 +52,8 @@ const ListGroup: React.FC<Props> = ({ items, heading, onItemClick }) => {
         // getMessage() //3
         items.length === 0 && <p>No items found</p> //4
       }
-      <ul className="list-group">
+      {/* <ul className="list-group"> */}
+      <ul className={[styles.ListGroup, styles.container].join(" ")}>
         {items.map((item, index) => (
           <li
             // className="list-group-item active"
