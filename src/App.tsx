@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-// import './App.css'
+import "./App.css";
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -38,6 +38,7 @@ import CounterButton from "./components/CounterButton";
 import Message from "./components/Message";
 import ListGroup from "./components/ListGroup/ListGroup";
 import Alert from "./components/Alert";
+import { BsFillCalendarFill } from "react-icons/bs";
 
 // function App() {
 const App: React.FC = () => {
@@ -52,6 +53,8 @@ const App: React.FC = () => {
 
   return (
     <div className="p-4">
+      <BsFillCalendarFill color="red" size="40" />
+
       <Message />
 
       {/* <Button onClick={() => alert("Button Clicked!")}>Click Me</Button>

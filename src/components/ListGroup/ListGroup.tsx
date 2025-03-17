@@ -1,7 +1,23 @@
 // import { MouseEvent } from "react";
 
 import { useState } from "react";
+// import "./ListGroup.css";
 import styles from "./ListGroup.module.css";
+import styled from "styled-components";
+
+const List = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+
+interface ListItemProps {
+  active: boolean;
+}
+
+const ListItem = styled.li<ListItemProps>`
+  padding: 5px 0;
+  background: ${(props) => (props.active ? "blue" : "none")};
+`;
 
 interface Props {
   items: string[];
@@ -38,7 +54,7 @@ const ListGroup: React.FC<Props> = ({ items, heading, onItemClick }) => {
   // const arr = useState(-1);
   // arr[0] // variable (selectedIndex)
   // arr[1] // updater function
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   // const [name,setName] = useState('');
 
   // interface - defines a contract for a shape of an object. Helps with type safey of an object
@@ -52,31 +68,42 @@ const ListGroup: React.FC<Props> = ({ items, heading, onItemClick }) => {
         // getMessage() //3
         items.length === 0 && <p>No items found</p> //4
       }
-      {/* <ul className="list-group"> */}
-      <ul className={[styles.ListGroup, styles.container].join(" ")}>
+      {/* <ul className="list-group container"> */}
+      {/* <ul className={[styles.ListGroup, styles.container].join(" ")}> */}
+      <List>
         {items.map((item, index) => (
-          <li
-            // className="list-group-item active"
-            className={
-              selectedIndex === index
-                ? "list-group-item active"
-                : "list-group-item"
-            }
+          // <li
+          //   // className="list-group-item active"
+          //   className={
+          //     selectedIndex === index
+          //       ? "list-group-item active"
+          //       : "list-group-item"
+          //   }
+          //   key={item}
+          //   // onClick={(event) => console.log(event, item, index)} //5
+          //   // onClick={handleClick} //6
+          //   onClick={() => {
+          //     //7
+          //     // alert(index);
+          //     // selectedIndex = index; // won't work
+          //     setSelectedIndex(index); // works
+          //     onItemClick(item);
+          //   }}
+          // >
+          <ListItem
+            active={index === selectedIndex}
             key={item}
-            // onClick={(event) => console.log(event, item, index)} //5
-            // onClick={handleClick} //6
             onClick={() => {
-              //7
-              // alert(index);
-              // selectedIndex = index; // won't work
-              setSelectedIndex(index); // works
+              setSelectedIndex(index);
               onItemClick(item);
             }}
           >
             {item}
-          </li>
+          </ListItem>
+          // </li>
         ))}
-      </ul>
+        {/* // </ul> */}
+      </List>
     </>
   );
 };

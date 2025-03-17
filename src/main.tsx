@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client"; // React dom - renders the actual DOM based on the virtual DOMs snapshot difference for component state changes
 import { Provider } from "react-redux";
-// import './index.css'
+// import "./index.css";
 // import "bootstrap/dist/css/bootstrap.css";
 import App from "./App.tsx";
 import store from "./store";
