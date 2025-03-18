@@ -36,9 +36,11 @@ import React, { useState } from "react";
 import Button from "./components/Button";
 import CounterButton from "./components/CounterButton";
 import Message from "./components/Message";
-import ListGroup from "./components/ListGroup/ListGroup";
+// import ListGroup from "./components/ListGroup/ListGroup";
+import ListGroup from "./components/ListGroup"; // referring to a folder, compiler will look for index.ts file within the folder
 import Alert from "./components/Alert";
 import { BsFillCalendarFill } from "react-icons/bs";
+import Like from "./components/Like";
 
 // function App() {
 const App: React.FC = () => {
@@ -51,8 +53,14 @@ const App: React.FC = () => {
 
   const [alertVisible, setAlertVisible] = useState(false);
 
+  function handleLikeClick(): void {
+    console.log("clicked");
+  }
+
   return (
     <div className="p-4">
+      <Like onClick={handleLikeClick} />
+
       <BsFillCalendarFill color="red" size="40" />
 
       <Message />

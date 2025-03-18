@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Button.module.css";
 
 interface ButtonProps {
   children: string;
@@ -13,7 +14,11 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   return (
-    <button className={"btn btn-" + color} onClick={onClick}>
+    // <button className={"btn btn-" + color} onClick={onClick}>
+    <button
+      className={[styles.btn, styles["btn-" + color]].join(" ")}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
