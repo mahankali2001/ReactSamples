@@ -8,6 +8,7 @@ import Alert from "./components/Alert";
 import { BsFillCalendarFill } from "react-icons/bs";
 import Like from "./components/Like";
 import "./App.css";
+import ExpandableText from "./components/ExpandableText";
 
 // function App() {
 const App: React.FC = () => {
@@ -55,6 +56,24 @@ const App: React.FC = () => {
 
   return (
     <div className="p-4">
+      <Message />
+
+      <p>
+        <ExpandableText maxChars={5}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
+          exercitationem ratione! Adipisci velit sapiente odit quia molestiae in
+          magni dicta veniam, at dignissimos iste sequi deleniti aliquam tempora
+          saepe vero praesentium ut autem corrupti tenetur expedita minima.
+          Natus explicabo iusto unde nisi at laboriosam consequatur commodi
+          possimus ullam expedita accusamus repellendus animi illum enim,
+          eveniet optio nam molestias nesciunt debitis ex voluptatem, quaerat
+          tenetur assumenda. Modi vero, inventore alias quos harum eligendi
+          necessitatibus error rerum pariatur corrupti sequi, repellendus odit
+          labore dignissimos incidunt laborum voluptas cumque vel quasi ducimus
+          perferendis. Reiciendis sed, magni tenetur facilis maiores nisi vitae
+          maxime fuga.
+        </ExpandableText>
+      </p>
       <p>
         {game.id} {game.player.name}
       </p>
@@ -70,15 +89,24 @@ const App: React.FC = () => {
         </ul>
       </p>
 
-      <Like onClick={handleLikeClick} />
+      <div>
+        <Like onClick={handleLikeClick} />
+      </div>
 
-      <BsFillCalendarFill color="red" size="40" />
-
-      <Message />
-
+      <div>
+        <BsFillCalendarFill color="red" size="40" />
+      </div>
       {/* <Button onClick={() => alert("Button Clicked!")}>Click Me</Button>
        */}
       <Button onClick={() => setAlertVisible(true)}>Click Me</Button>
+
+      {/* <Alert text="Hello World"/> */}
+      {alertVisible && (
+        <Alert onClose={() => setAlertVisible(false)}>
+          {/* Hello <span>World</span> */}
+          Hello World
+        </Alert>
+      )}
 
       <CounterButton />
 
@@ -87,13 +115,6 @@ const App: React.FC = () => {
         heading="Numbers"
         onItemClick={handleItemClick}
       />
-      {/* <Alert text="Hello World"/> */}
-      {alertVisible && (
-        <Alert onClose={() => setAlertVisible(false)}>
-          {/* Hello <span>World</span> */}
-          Hello World
-        </Alert>
-      )}
     </div>
   );
 };
