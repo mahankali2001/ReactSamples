@@ -74,28 +74,19 @@ const App: React.FC = () => {
           maxime fuga.
         </ExpandableText>
       </p>
-      <p>
-        {game.id} {game.player.name}
-      </p>
-
-      <p>
-        {cart.discount}
-        <ul>
-          {cart.items.map((item) => (
-            <li key={item.id}>
-              {item.title} - {item.quantity}
-            </li>
-          ))}
-        </ul>
-      </p>
 
       <div>
         <Like onClick={handleLikeClick} />
       </div>
 
-      <div>
-        <BsFillCalendarFill color="red" size="40" />
-      </div>
+      <ul>
+        {cart.items.map((item) => (
+          <li key={item.id}>
+            {item.title} - {item.quantity}
+          </li>
+        ))}
+      </ul>
+
       {/* <Button onClick={() => alert("Button Clicked!")}>Click Me</Button>
        */}
       <Button onClick={() => setAlertVisible(true)}>Click Me</Button>
@@ -115,6 +106,14 @@ const App: React.FC = () => {
         heading="Numbers"
         onItemClick={handleItemClick}
       />
+
+      <p>
+        {game.id} {game.player.name}
+      </p>
+
+      <div>
+        <BsFillCalendarFill color="red" size="40" />
+      </div>
     </div>
   );
 };
