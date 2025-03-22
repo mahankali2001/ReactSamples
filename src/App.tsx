@@ -9,6 +9,11 @@ import { BsFillCalendarFill } from "react-icons/bs";
 import Like from "./components/Like";
 import "./App.css";
 import ExpandableText from "./components/ExpandableText";
+import Form from "./components/Forms";
+import ExpenseList from "./expense-tracker/components/ExpenseList";
+import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
+// import categories from "./expense-tracker/categories";
+import ExpenseForm from "./expense-tracker/ExpenseForm";
 
 // function App() {
 const App: React.FC = () => {
@@ -54,9 +59,45 @@ const App: React.FC = () => {
     });
   }
 
+  const [expenses, setExpenses] = useState([
+    { id: 1, description: "a1", amount: 10, category: "Utilities" },
+    { id: 2, description: "a2", amount: 10, category: "Utilities" },
+    { id: 3, description: "a3", amount: 10, category: "Utilities" },
+    { id: 4, description: "a4", amount: 10, category: "Utilities" },
+  ]);
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const visibleExpenses = selectedCategory
+    ? expenses.filter((e) => e.category === selectedCategory)
+    : expenses;
+
   return (
     <div className="p-4">
+      <div className="md-5">
+        <ExpenseForm
+          onSubmit={(expense) =>
+            setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
+          }
+        ></ExpenseForm>
+      </div>
+
+      <div className="mb-3">
+        <ExpenseFilter
+          onSelectCategory={(category) => {
+            setSelectedCategory(category);
+          }}
+        ></ExpenseFilter>
+      </div>
+
+      <ExpenseList
+        expenses={visibleExpenses}
+        onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
+      ></ExpenseList>
+
       <Message />
+
+      <Form></Form>
 
       <p>
         <ExpandableText maxChars={5}>
